@@ -1,0 +1,37 @@
+/**
+ * Makes the Brizy Instagram feed block fill its container width.
+ *
+ * Problem: the feed block kept a fixed minimum width, so on phones it
+ * overflowed the section and forced horizontal scrolling.
+ * Solution: force fluid width on the block, its wrapper and the embed.
+ *
+ * Note: Brizy generates hashed classes (.brz-css-*) that change if the
+ * element is rebuilt in the editor. A custom class set in the block
+ * settings is used instead so this stays stable.
+ * Note: rules targeting .instagram-media only apply when the feed plugin
+ * renders inline; content inside a cross-origin iframe cannot be styled.
+ */
+
+/* All viewports */
+.brz-instagram-feed {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Mobile — release the fixed minimum width set by the plugin */
+@media (max-width: 767px) {
+    .brz-instagram-feed,
+    .brz-instagram-feed iframe,
+    .brz-instagram-feed .instagram-media {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Brizy wrapper can clamp the content on its own */
+    .brz-instagram-feed .brz-wrapper {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+}
