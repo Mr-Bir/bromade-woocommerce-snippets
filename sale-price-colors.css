@@ -1,0 +1,28 @@
+/**
+ * Restores sale price styling overwritten by the theme.
+ *
+ * Problem: after a theme update the old price lost its strikethrough and both
+ * prices rendered in the same colour, so it was unclear which one applied.
+ * Solution: style the <del> and <ins> elements WooCommerce wraps prices in.
+ *
+ * The defensive declarations (opacity on <del>, text-decoration: none on
+ * <ins>) undo theme rules rather than set new design — <ins> is underlined by
+ * default in browsers, and the theme faded <del> to near-invisible.
+ *
+ * !important is required here: the theme loads its price styles after this
+ * snippet. Sale red matches .discount-badge.
+ */
+
+/* Old price — struck through, de-emphasised */
+del .woocommerce-Price-amount.amount {
+    color: #6b7280 !important;
+    text-decoration: line-through !important;
+    opacity: 1 !important;
+}
+
+/* Current price */
+ins .woocommerce-Price-amount.amount {
+    color: #b91c1c !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+}
