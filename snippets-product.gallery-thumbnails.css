@@ -1,0 +1,47 @@
+/**
+ * Lays out WooCommerce product gallery thumbnails as a centred square grid.
+ *
+ * Problem: the default FlexSlider thumbnails float left in uneven rows with
+ * distorted aspect ratios, which looked broken on mobile.
+ * Solution: flex layout with fixed square tiles and an active-state outline.
+ *
+ * float: none is needed because WooCommerce floats the list items.
+ * Accent colour matches .discount-badge (see sale-price-display/).
+ */
+
+.flex-control-nav.flex-control-thumbs {
+    --thumb-size: 80px;
+    --thumb-accent: #b91c1c;
+
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    margin: 8px 0 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.flex-control-nav.flex-control-thumbs li {
+    width: var(--thumb-size) !important;
+    height: var(--thumb-size) !important;
+    margin: 0 !important;
+    float: none !important;
+}
+
+.flex-control-nav.flex-control-thumbs li img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    opacity: 0.6 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.flex-control-nav.flex-control-thumbs li img:hover,
+.flex-control-nav.flex-control-thumbs li img.flex-active {
+    opacity: 1 !important;
+    outline: 2px solid var(--thumb-accent) !important;
+    outline-offset: 2px !important;
+}
