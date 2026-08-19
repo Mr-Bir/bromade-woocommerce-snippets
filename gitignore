@@ -1,0 +1,31 @@
+# OS files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+Desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*~
+
+# Logs and dumps
+*.log
+error_log
+debug.log
+*.sql
+*.sql.gz
+
+# Local variants holding real IDs, keys or client data — never commit
+*.local.php
+*.local.css
+secrets.php
+wp-config.php
+
+# Dependencies and build output
+node_modules/
+vendor/
